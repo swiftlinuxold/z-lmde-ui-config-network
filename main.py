@@ -58,29 +58,11 @@ install_pkg_antix ('advert-block-antix', '.deb', 'http://www.daveserver.info/ant
 
 # Install ceni
 install_pkg_antix ('ceni', '.deb', 'http://www.daveserver.info/antiX/main/')
-
-# Copy script to /usr/local/bin, make executable
-def copy_to_dir_usr_local_bin (appname):
-    src = dir_develop + '/ui-config/usr_local_bin/' + appname + '.sh'
-    dest = '/usr/local/bin/' + appname + '.sh'
-    shutil.copyfile(src, dest)
-    os.system ('chmod a+rx ' + dest)
-
-# Copy desktop file to /usr/share/applications/
-def copy_to_dir_usr_share_applications (appname):
-    src = dir_develop+'/ui-config/usr_share_applications/' + appname + '.desktop'
-    dest = '/usr/share/applications/' + appname + '.desktop'
-    shutil.copyfile(src, dest)
-    
-def copy_to_dir (appname):
-    copy_to_dir_usr_local_bin (appname)
-    copy_to_dir_usr_share_applications (appname)
-    
-# copy_to_dir ('swiftcc')
 	
-# src = dir_develop + '/ui-config/usr_local_bin'
-# dest = '/usr/local/bin'
-# shutil.copytree (src, dest)
+src = dir_develop + '/ui-config-network/usr_local_bin/config-network.sh'
+dest = '/usr/local/bin/config-network.sh'
+shutil.copyfile (src, dest)
+os.system ('chmod a+rx ' + dest)
 
 # dir1 = dir_develop+'/ui-menu/usr_local_bin'
 # dir2 = '/usr/local/bin'
