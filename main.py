@@ -58,19 +58,12 @@ install_pkg_antix ('advert-block-antix', '.deb', 'http://www.daveserver.info/ant
 
 # Install ceni
 install_pkg_antix ('ceni', '.deb', 'http://www.daveserver.info/antiX/main/')
+os.system ('apt-get -f -y install')
 	
 src = dir_develop + '/ui-config-network/usr_local_bin/config-network.sh'
 dest = '/usr/local/bin/config-network.sh'
 shutil.copyfile (src, dest)
 os.system ('chmod a+rx ' + dest)
-
-# dir1 = dir_develop+'/ui-menu/usr_local_bin'
-# dir2 = '/usr/local/bin'
-
-# copy_to_dir ('config-swiftlinux.sh')
-# copy_to_dir ('config-network.sh')
-# copy_to_dir ('get-apps.sh')
-# copy_to_dir ('use-apps.sh')
 
 print 'FINISHED ADDING NETWORK CONFIGURATION SCRIPTS'
 print '============================================='
