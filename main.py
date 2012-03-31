@@ -56,12 +56,17 @@ install_pkg_antix ('yad', chr(45) + '1_i386.deb', 'http://debs.slavino.sk/pool/m
 # Install advert-block-antix
 install_pkg_antix ('advert-block-antix', '.deb', 'http://www.daveserver.info/antiX/main/')
 
+# Update /etc/hosts file to block ads
+src = dir_develop + '/ui-config-network/etc/hosts'
+dest = '/etc/hosts'
+shutil.copyfile (src, dest)
+
 # Install ceni
 install_pkg_antix ('ceni', '.deb', 'http://www.daveserver.info/antiX/main/')
 os.system ('apt-get -f -y install')
 	
-src = dir_develop + '/ui-config-network/usr_local_bin/config-network.sh'
-dest = '/usr/local/bin/config-network.sh'
+src = dir_develop + '/ui-config-network/usr_local_bin/config-network.py'
+dest = '/usr/local/bin/config-network.py'
 shutil.copyfile (src, dest)
 os.system ('chmod a+rx ' + dest)
 
