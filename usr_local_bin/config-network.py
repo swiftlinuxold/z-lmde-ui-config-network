@@ -76,21 +76,27 @@ class NetworkWizard:
         self.image.set_from_file (filename_image)
         self.image.show ()
         
+        # Button
+        self.button = gtk.Button()
+        self.button.set_size_request(64, 64)
+        self.button.connect('clicked', fctn_action)
+        self.button.add(self.image)
+        self.button.show()
+        
         # Label
         self.label = gtk.Label(string_label)
         
-        # Button
-        self.button = gtk.Button()
-        self.button.set_size_request(32, 32)
-        self.button.connect('clicked', fctn_action)
-        self.button.add(self.image)
+        # Alignment
+        #self.align = gtk.Alignment(0, 0, 0, 0)
+        #self.hbox.pack_start(self.align, False, False, 5)
+        #self.align.show()
+        #self.align.add(self.button)
+        #self.align.add(self.label)
         
         
         
-        self.button.show()
-        
-        self.hbox.pack_start(self.button)
-        self.hbox.pack_start(self.label)
+        self.hbox.pack_start(self.button, fill=False) # Keeps the button from filling all space
+        self.hbox.pack_start(self.label, fill=False) # Keeps the button from filling all space
         
         return self.hbox
     
