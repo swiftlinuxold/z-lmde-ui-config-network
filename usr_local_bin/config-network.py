@@ -5,7 +5,7 @@ pygtk.require('2.0')
 import gtk
 import os
 
-class NetworkWizard:
+class Wizard:
 
     def __init__(self):
         
@@ -100,5 +100,5 @@ def main():
     return 0       
 
 if __name__ == "__main__":
-    NetworkWizard()
+    Wizard()
     main()
