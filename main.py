@@ -70,5 +70,9 @@ dest = '/usr/local/bin/config-network.py'
 shutil.copyfile (src, dest)
 os.system ('chmod a+rx ' + dest)
 
+src = dir_develop + '/ui-config-network/usr_share_applications/config-network.desktop'
+dest = '/usr/share/applications/config-network.desktop'
+shutil.copyfile (src, dest)
+
 print 'FINISHED ADDING NETWORK CONFIGURATION SCRIPTS'
 print '============================================='

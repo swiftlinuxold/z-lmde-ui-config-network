@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Network Wizard
+Exec=python /usr/local/bin/config-network.py
+Icon=/usr/share/icons/gTangish-2.0a1/32x32/status/network-transmit-receive.png
+Terminal=false
+Type=Application
+Categories=Internet;Network;Settings
