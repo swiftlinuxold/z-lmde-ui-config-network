@@ -17,20 +17,22 @@ class NetworkWizard:
         # Create vertical box
         self.vbox = gtk.VBox ()
         
+        # EACH OPTION GETS ITS OWN HORIZONTAL BOX (wizard_option)
+        
         # OPTION 1: ceni
-        self.box_image = '/usr/share/icons/gTangish-2.0a1/32x32/status/connect_creating.png'
+        self.box_image = '/usr/share/icons/hicolor/32x32/apps/ceni.png'
         self.box_label = 'ceni (WiFi and Ethernet)'
         self.box = self.wizard_option (self.box_image, self.box_label, self.ceni)
         self.vbox.add (self.box)
         
         # Option 2: GNOME PPP
-        self.box_image = '/usr/share/icons/gTangish-2.0a1/32x32/devices/network-wired.png'
+        self.box_image = '/usr/share/icons/hicolor/48x48/apps/gnome-ppp.png'
         self.box_label = 'GNOME-PPP (dial-up)'
         self.box = self.wizard_option (self.box_image, self.box_label, self.gnomeppp)
         self.vbox.add (self.box)
         
-        # Option 3: GNOME PPP
-        self.box_image = '/usr/share/icons/gTangish-2.0a1/32x32/apps/firewall.png'
+        # Option 3: Firewall
+        self.box_image = '/usr/share/icons/hicolor/48x48/apps/gufw.png'
         self.box_label = 'Firewall'
         self.box = self.wizard_option (self.box_image, self.box_label, self.firewall)
         self.vbox.add (self.box)
@@ -70,8 +72,7 @@ class NetworkWizard:
         # Horizontal box
         self.hbox = gtk.HBox ()
         
-        # Image
-        self.image = gtk.Image
+        # Button icon
         self.image = gtk.Image ()
         self.image.set_from_file (filename_image)
         self.image.show ()
@@ -80,23 +81,35 @@ class NetworkWizard:
         self.button = gtk.Button()
         self.button.set_size_request(64, 64)
         self.button.connect('clicked', fctn_action)
-        self.button.add(self.image)
+        self.button.add(self.image) # Add image to button
         self.button.show()
+        self.hbox.pack_start(self.button, True, True, 0)
+        
+        # Alignment (button)
+        #self.align = gtk.Alignment(0, 0, 0, 0)
+        #self.hbox.pack_start(self.align)
+        
+        
+        
+        
+        
+        
+        # Add button to alignment
+        #self.align.add (self.button)
+        #self.align.show()
+        
+        
+        # Alignment (label)
+        #self.align = gtk.Alignment(0, 0, 0, 0)
+        #self.hbox.pack_start(self.align)
         
         # Label
-        self.label = gtk.Label(string_label)
+        self.label = gtk.Label (string_label)
+        self.label.set_alignment (0, .5)
+        self.label.show ()
         
-        # Alignment
-        #self.align = gtk.Alignment(0, 0, 0, 0)
-        #self.hbox.pack_start(self.align, False, False, 5)
-        #self.align.show()
-        #self.align.add(self.button)
-        #self.align.add(self.label)
-        
-        
-        
-        self.hbox.pack_start(self.button, fill=False) # Keeps the button from filling all space
-        self.hbox.pack_start(self.label, fill=False) # Keeps the button from filling all space
+        self.hbox.pack_start(self.label, True, True, 0)
+        self.hbox.show ()
         
         return self.hbox
     
