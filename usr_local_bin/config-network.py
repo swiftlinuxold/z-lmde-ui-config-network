@@ -83,32 +83,14 @@ class NetworkWizard:
         self.button.connect('clicked', fctn_action)
         self.button.add(self.image) # Add image to button
         self.button.show()
-        self.hbox.pack_start(self.button, True, True, 0)
-        
-        # Alignment (button)
-        #self.align = gtk.Alignment(0, 0, 0, 0)
-        #self.hbox.pack_start(self.align)
-        
-        
-        
-        
-        
-        
-        # Add button to alignment
-        #self.align.add (self.button)
-        #self.align.show()
-        
-        
-        # Alignment (label)
-        #self.align = gtk.Alignment(0, 0, 0, 0)
-        #self.hbox.pack_start(self.align)
+        self.hbox.pack_start(self.button, False, False, 0)
         
         # Label
-        self.label = gtk.Label (string_label)
+        self.label = gtk.Label (' ' + string_label)
         self.label.set_alignment (0, .5)
         self.label.show ()
         
-        self.hbox.pack_start(self.label, True, True, 0)
+        self.hbox.pack_start(self.label, False, False, 0)
         self.hbox.show ()
         
         return self.hbox
