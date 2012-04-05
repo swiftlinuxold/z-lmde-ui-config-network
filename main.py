@@ -37,18 +37,30 @@ def install_pkg_antix (name1, name2, url):
     devnull = open (os.devnull,"w")
     retval = subprocess.call(["dpkg","-s",name1],stdout=devnull,stderr=subprocess.STDOUT)
     devnull.close()
-    if retval == 0:
-        print (name1 + ' is already installed')
-    else:
-        print 'DOWNLOADING ' + name1 + ' FROM ' + url
-        wget_command = 'wget -nv -nd -nH -r -l1 --wait=1 -erobots=off --no-parent -A '
+    i = 0
+    while (retval <> 0) and (i < 50):
+        os.system ('echo DOWNLOADING ' + name1 + ' FROM ' + url)
+        wget_command = 'wget -nv -nd -nH -r -l1 -q --no-parent -A '
         deb_file = name1 + '_*' + name2
         wget_command = wget_command + chr(39) + deb_file + chr(39) + ' '
         wget_command = wget_command + url
-        print wget_command
+        os.system ('echo ' + wget_command)
         os.system (wget_command)
         os.system ('dpkg -i ' + deb_file)
         os.system ('rm ' + deb_file)
+        os.system ('rm robot*')
+        devnull = open (os.devnull,"w")
+        retval = subprocess.call(["dpkg","-s",name1],stdout=devnull,stderr=subprocess.STDOUT)
+        devnull.close()
+        if (i > 3) and (retval <> 0):
+            os.system ('echo Installation not completed, will try again')
+            import time, random
+            sec = random.randrange (3,10)
+            time.sleep (sec)
+    if retval == 0:
+        os.system ('echo ' + name1 + ' is already installed')
+    else:
+        os.system ('echo WARNING: ' + name1 + ' is NOT installed')
 
 # Install yad
 install_pkg_antix ('yad', chr(45) + '1_i386.deb', 'http://debs.slavino.sk/pool/main/y/yad/')
