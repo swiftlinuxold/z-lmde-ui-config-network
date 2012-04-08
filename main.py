@@ -32,14 +32,14 @@ os.system ('echo BEGIN ADDING SWIFT LINUX NETWORK CONFIGURATION SCRIPTS')
 import shutil, subprocess
 
 os.system ('echo ADDING ceni')
-os.system ('apt-get install -qq ceni')
+os.system ('dpkg -i ' + dir_develop + '/ui-config-network/deb/ceni*.deb')
 os.system ('apt-get -f -y install')
 
 os.system ('echo ADDING yad')
-os.system ('apt-get install -qq yad')
+os.system ('dpkg -i ' + dir_develop + '/ui-config-network/deb/yad*.deb')
 
 os.system ('echo ADDING advert-block-antix')
-os.system ('apt-get install -qq advert-block-antix')
+os.system ('dpkg -i ' + dir_develop + '/ui-config-network/deb/advert-block-antix*.deb')
 
 # Update /etc/hosts file to block ads
 src = dir_develop + '/ui-config-network/etc/hosts'
