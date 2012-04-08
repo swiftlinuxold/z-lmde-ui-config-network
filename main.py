@@ -26,56 +26,25 @@ else:
 
 # THIS IS THE SCRIPT FOR ADDING THE SWIFT LINUX CONFIGURATION SCRIPTS
 
-print '======================================================'
-print 'BEGIN ADDING SWIFT LINUX NETWORK CONFIGURATION SCRIPTS'
+os.system ('echo ======================================================')
+os.system ('echo BEGIN ADDING SWIFT LINUX NETWORK CONFIGURATION SCRIPTS')
 
 import shutil, subprocess
 
-def install_pkg_antix (name1, name2, url):
-    # First check for package
-    # Credit: http://stackoverflow.com/questions/3387961/check-if-a-package-is-installed
-    devnull = open (os.devnull,"w")
-    retval = subprocess.call(["dpkg","-s",name1],stdout=devnull,stderr=subprocess.STDOUT)
-    devnull.close()
-    i = 0
-    while (retval <> 0) and (i < 50):
-        os.system ('echo DOWNLOADING ' + name1 + ' FROM ' + url)
-        wget_command = 'wget -nv -nd -nH -r -l1 -q --no-parent -A '
-        deb_file = name1 + '_*' + name2
-        wget_command = wget_command + chr(39) + deb_file + chr(39) + ' '
-        wget_command = wget_command + url
-        os.system ('echo ' + wget_command)
-        os.system (wget_command)
-        os.system ('dpkg -i ' + deb_file)
-        os.system ('rm ' + deb_file)
-        os.system ('rm robot*')
-        devnull = open (os.devnull,"w")
-        retval = subprocess.call(["dpkg","-s",name1],stdout=devnull,stderr=subprocess.STDOUT)
-        devnull.close()
-        if (i > 3) and (retval <> 0):
-            os.system ('echo Installation not completed, will try again')
-            import time, random
-            sec = random.randrange (3,10)
-            time.sleep (sec)
-    if retval == 0:
-        os.system ('echo ' + name1 + ' is already installed')
-    else:
-        os.system ('echo WARNING: ' + name1 + ' is NOT installed')
+os.system ('echo ADDING ceni')
+os.system ('apt-get install -qq ceni')
+os.system ('apt-get -f -y install')
 
-# Install yad
-install_pkg_antix ('yad', chr(45) + '1_i386.deb', 'http://debs.slavino.sk/pool/main/y/yad/')
+os.system ('echo ADDING yad')
+os.system ('apt-get install -qq yad')
 
-# Install advert-block-antix
-install_pkg_antix ('advert-block-antix', '.deb', 'http://www.daveserver.info/antiX/main/')
+os.system ('echo ADDING advert-block-antix')
+os.system ('apt-get install -qq advert-block-antix')
 
 # Update /etc/hosts file to block ads
 src = dir_develop + '/ui-config-network/etc/hosts'
 dest = '/etc/hosts'
 shutil.copyfile (src, dest)
-
-# Install ceni
-install_pkg_antix ('ceni', '.deb', 'http://www.daveserver.info/antiX/main/')
-os.system ('apt-get -f -y install')
 	
 src = dir_develop + '/ui-config-network/usr_local_bin/config-network.py'
 dest = '/usr/local/bin/config-network.py'
@@ -86,5 +55,5 @@ src = dir_develop + '/ui-config-network/usr_share_applications/config-network.de
 dest = '/usr/share/applications/config-network.desktop'
 shutil.copyfile (src, dest)
 
-print 'FINISHED ADDING NETWORK CONFIGURATION SCRIPTS'
-print '============================================='
+os.system ('echo FINISHED ADDING NETWORK CONFIGURATION SCRIPTS')
+os.system ('echo =============================================')
