@@ -31,9 +31,12 @@ os.system ('echo BEGIN ADDING SWIFT LINUX NETWORK CONFIGURATION SCRIPTS')
 
 import shutil, subprocess
 
+os.system ('echo ADDING libcurses-ui-perl, libexpect-perl, and libterm-readkey-perl')
+os.system ('echo (dependencies of ceni)')
+os.system ('apt-get install -qq libcurses-ui-perl libexpect-perl libterm-readkey-perl')
+
 os.system ('echo ADDING ceni')
 os.system ('dpkg -i ' + dir_develop + '/ui-config-network/deb/ceni*.deb')
-os.system ('apt-get -f -y install')
 
 os.system ('echo ADDING yad')
 os.system ('dpkg -i ' + dir_develop + '/ui-config-network/deb/yad*.deb')
