@@ -24,19 +24,14 @@ else:
 # Everything up to this point is common to all Python scripts called by shared-*.sh
 # =================================================================================
 
-# THIS IS THE SCRIPT FOR ADDING THE SWIFT LINUX CONFIGURATION SCRIPTS
+def add_pkg (packages):
+    os.system ('echo INSTALLING ' + packages)
+    os.system ('apt-get install -qq ' + packages)
 
 os.system ('echo ======================================================')
 os.system ('echo BEGIN ADDING SWIFT LINUX NETWORK CONFIGURATION SCRIPTS')
 
 import shutil, subprocess
-
-os.system ('echo ADDING libcurses-ui-perl, libexpect-perl, and libterm-readkey-perl')
-os.system ('echo (dependencies of ceni)')
-os.system ('apt-get install -qq libcurses-ui-perl libexpect-perl libterm-readkey-perl')
-
-os.system ('echo ADDING ceni')
-os.system ('dpkg -i ' + dir_develop + '/ui-config-network/deb/ceni*.deb')
 
 os.system ('echo ADDING yad')
 os.system ('dpkg -i ' + dir_develop + '/ui-config-network/deb/yad*.deb')
