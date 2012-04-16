@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=Network Wizard
-Exec=python /usr/local/bin/config-network.py
+Exec=/usr/local/bin/config-network.py
 Icon=/usr/share/icons/gnome/32x32/categories/preferences-system-network.png
 Terminal=false
 Type=Application
