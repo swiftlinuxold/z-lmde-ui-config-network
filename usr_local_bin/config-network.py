@@ -20,7 +20,7 @@ class Wizard:
         # EACH OPTION GETS ITS OWN HORIZONTAL BOX (wizard_option)
         
         # OPTION 1: GNOME Network Manager
-        self.box_image = '/usr/share/icons/hicolor/32x32/apps/preferences-system-network.png'
+        self.box_image = '/usr/share/icons/gnome/32x32/categories/preferences-system-network.png'
         self.box_label = 'GNOME Network Manager'
         self.box = self.wizard_option (self.box_image, self.box_label, self.nm)
         self.vbox.add (self.box)
