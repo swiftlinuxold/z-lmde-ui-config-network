@@ -39,6 +39,11 @@ os.system ('dpkg -i ' + dir_develop + '/ui-config-network/deb/yad*.deb')
 os.system ('echo ADDING advert-block-antix')
 os.system ('dpkg -i ' + dir_develop + '/ui-config-network/deb/advert-block-antix*.deb')
 
+os.system ('echo ADDING ceni')
+os.system ('dpkg -i ' + dir_develop + '/ui-config-network/deb/ceni*.deb')
+os.system ('echo ADDING ceni dependencies')
+os.system ('apt-get install -f -qq')
+
 # Update /etc/hosts file to block ads
 src = dir_develop + '/ui-config-network/etc/hosts'
 dest = '/etc/hosts'
