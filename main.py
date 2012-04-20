@@ -31,6 +31,9 @@ def add_pkg (packages):
 os.system ('echo ======================================================')
 os.system ('echo BEGIN ADDING SWIFT LINUX NETWORK CONFIGURATION SCRIPTS')
 
+# WARNING: ceni conflicts with many GNOME packages.
+# Do NOT add ceni until you have run the main.py script in the remove-gnome repository.
+
 import shutil, subprocess
 
 os.system ('echo ADDING yad')

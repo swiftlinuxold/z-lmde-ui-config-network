@@ -19,10 +19,10 @@ class Wizard:
         
         # EACH OPTION GETS ITS OWN HORIZONTAL BOX (wizard_option)
         
-        # OPTION 1: GNOME Network Manager
-        self.box_image = '/usr/share/icons/gnome/32x32/categories/preferences-system-network.png'
-        self.box_label = 'GNOME Network Manager'
-        self.box = self.wizard_option (self.box_image, self.box_label, self.nm)
+        # OPTION 1: ceni
+        self.box_image = '/usr/share/icons/hicolor/32x32/apps/ceni.png'
+        self.box_label = 'ceni (Ethernet and WiFi)'
+        self.box = self.wizard_option (self.box_image, self.box_label, self.ceni)
         self.vbox.add (self.box)
         
         # Option 2: GNOME PPP
@@ -56,8 +56,8 @@ class Wizard:
         gtk.main_quit()
         return False
         
-    def nm (self, widget, callback_data=None):
-        os.system ('nm-connection-editor &')
+    def ceni (self, widget, callback_data=None):
+        os.system ('roxterm -e ceniwrapper &')
         
     def gnomeppp (self, widget, callback_data=None):
         os.system ('gnome-ppp &')
