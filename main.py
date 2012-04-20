@@ -51,6 +51,19 @@ os.system ('apt-get install -f -qq')
 src = dir_develop + '/ui-config-network/etc/hosts'
 dest = '/etc/hosts'
 shutil.copyfile (src, dest)
+
+src = dir_develop + '/ui-config-network/etc_network_run/ifstate'
+dest = '/etc/network/run/ifstate'
+shutil.copyfile (src, dest)
+os.system ('chmod 644 ' + dest)
+
+src = dir_develop + '/ui-config-network/etc_network/interfaces'
+dest = '/etc/network/interfaces'
+shutil.copyfile (src, dest)
+os.system ('chmod 640 ' + dest)
+
+os.system ('ifdown eth1')
+os.system ('ifup eth1')
 	
 src = dir_develop + '/ui-config-network/usr_local_bin/config-network.py'
 dest = '/usr/local/bin/config-network.py'
