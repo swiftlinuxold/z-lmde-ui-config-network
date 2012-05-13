@@ -31,9 +31,6 @@ def add_pkg (packages):
 os.system ('echo ======================================================')
 os.system ('echo BEGIN ADDING SWIFT LINUX NETWORK CONFIGURATION SCRIPTS')
 
-# WARNING: ceni conflicts with many GNOME packages.
-# Do NOT add ceni until you have run the main.py script in the remove-gnome repository.
-
 import shutil, subprocess
 
 os.system ('echo ADDING yad')
@@ -42,28 +39,23 @@ os.system ('dpkg -i ' + dir_develop + '/ui-config-network/deb/yad*.deb')
 os.system ('echo ADDING advert-block-antix')
 os.system ('dpkg -i ' + dir_develop + '/ui-config-network/deb/advert-block-antix*.deb')
 
-os.system ('echo ADDING ceni')
-os.system ('dpkg -i ' + dir_develop + '/ui-config-network/deb/ceni*.deb')
-os.system ('echo ADDING ceni dependencies')
-os.system ('apt-get install -f -qq')
-
 # Update /etc/hosts file to block ads
-src = dir_develop + '/ui-config-network/etc/hosts'
-dest = '/etc/hosts'
-shutil.copyfile (src, dest)
+#src = dir_develop + '/ui-config-network/etc/hosts'
+#dest = '/etc/hosts'
+#shutil.copyfile (src, dest)
 
-src = dir_develop + '/ui-config-network/etc_network_run/ifstate'
-dest = '/etc/network/run/ifstate'
-shutil.copyfile (src, dest)
-os.system ('chmod 644 ' + dest)
+#src = dir_develop + '/ui-config-network/etc_network_run/ifstate'
+#dest = '/etc/network/run/ifstate'
+#shutil.copyfile (src, dest)
+#os.system ('chmod 644 ' + dest)
 
-src = dir_develop + '/ui-config-network/etc_network/interfaces'
-dest = '/etc/network/interfaces'
-shutil.copyfile (src, dest)
-os.system ('chmod 640 ' + dest)
+#src = dir_develop + '/ui-config-network/etc_network/interfaces'
+#dest = '/etc/network/interfaces'
+#shutil.copyfile (src, dest)
+#os.system ('chmod 640 ' + dest)
 
-os.system ('ifdown eth1')
-os.system ('ifup eth1')
+#os.system ('ifdown eth1')
+#os.system ('ifup eth1')
 	
 src = dir_develop + '/ui-config-network/usr_local_bin/config-network.py'
 dest = '/usr/local/bin/config-network.py'
